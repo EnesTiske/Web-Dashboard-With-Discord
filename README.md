@@ -2,7 +2,7 @@
 
 ## About Me
 
-Hello! I’m Mehmet Enes Tiske, a third-year Computer Engineering student at Gazi University. I have a strong passion for developing innovative software solutions and honing my skills in full-stack development. My goal is to create applications that not only solve real-world problems but also enhance user experiences. This project represents my efforts to integrate various technologies while building a functional and engaging tool for Discord users.
+Hello! I’m Enes Tiske, a third-year Computer Engineering student at Gazi University. I have a strong passion for developing innovative software solutions and honing my skills in full-stack development. My goal is to create applications that not only solve real-world problems but also enhance user experiences. This project represents my efforts to integrate various technologies while building a functional and engaging tool for Discord users.
 
 ## Project Overview
 
