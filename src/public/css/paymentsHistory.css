@@ -1,0 +1,139 @@
+#historyTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#historyTable th,
+#historyTable td {
+    padding: 15px;
+    text-align: left;
+}
+
+#historyTable th {
+    background-color: #2f3136;
+    text-align: left;
+}
+
+#historyTable tbody tr:nth-child(even) {
+    background-color: #2c2f33;
+}
+
+#historyTable tbody tr:hover {
+    background-color: #7289da;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Data table link styles */
+#historyTable td a {
+    color: #7289da;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#historyTable td a:hover {
+    color: #5b6eae;
+}
+
+#historyTable th:nth-child(1),
+#historyTable td:nth-child(1) {
+    width: 15%; /* User column width */
+}
+
+#historyTable th:nth-child(2),
+#historyTable td:nth-child(2) {
+    width: 25%; /* Customer column width */
+}
+
+#historyTable th:nth-child(3),
+#historyTable td:nth-child(3) {
+    width: 15%; /* Amount column width */
+}
+
+#historyTable th:nth-child(4),
+#historyTable td:nth-child(4) {
+    width: 25%; /* Date column width */
+}
+
+#historyTable th:nth-child(5),
+#historyTable td:nth-child(5) {
+    width: 20%; /* Receipt Number column width */
+}
+
+#historyTable th:nth-child(3),
+#historyTable th:nth-child(4) {
+    cursor: pointer;
+}
+
+#historyTable th:nth-child(3):hover,
+#historyTable th:nth-child(4):hover {
+    background-color: #37393e; /* Değişiklik: Tıklanabilirlik vurgusu */
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 600px) {
+    #historyTable th,
+    #historyTable td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    #historyTable th:nth-child(2),
+    #historyTable td:nth-child(2) {
+        display: none; /* Customer column hidden */
+    }
+
+    #historyTable th:nth-child(5),
+    #historyTable td:nth-child(5) {
+        display: none; /* Receipt Number column hidden */
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    #historyTable th,
+    #historyTable td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    #historyTable th:nth-child(2),
+    #historyTable td:nth-child(2) {
+        display: none; /* Customer column hidden */
+    }
+
+    #historyTable th:nth-child(5),
+    #historyTable td:nth-child(5) {
+        display: none; /* Receipt Number column hidden */
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #historyTable th,
+    #historyTable td {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Scrollable table body */
+#historyTableBody {
+    display: block;
+    max-height: 600px; /* Adjust the height as needed */
+    overflow-y: auto;
+    width: 100%;
+}
+
+#historyTableBody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#historyTable thead,
+#historyTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}

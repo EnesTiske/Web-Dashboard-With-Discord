@@ -1,0 +1,89 @@
+.swal2-dark-popup {
+    background-color: #2f3136; /* Arka plan rengi */
+    color: white; /* Yazı rengi */
+}
+
+.swal2-edit-button {
+    background-color: #43b581; /* Edit butonu rengi */
+}
+
+.swal2-delete-button {
+    background-color: #d33; /* Delete butonu rengi */
+}
+
+.swal-emote-container {
+
+    align-items: center;
+}
+
+.swal-emote-image {
+    width: 128px;
+    height: 128px;
+    border-radius: 8px;
+}
+
+.swal-emote-details p {
+    margin-bottom: 5px;
+}
+
+.swal-emote-details strong {
+    color: #fff; /* Koyu arka plan üzerinde beyaz metin */
+}
+
+.swal-popup {
+    width: 450px;
+    /* Modal genişliğini ayarlayın */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #37393e;
+    /* Modal arka plan rengi */
+    backdrop-filter: blur(10px); /* Arka planı bulanıklaştırmak için */
+}
+
+/* SweetAlert Input Styles */
+.swal2-input {
+    background-color: #202225; /* Input background color */
+    color: white;            /* Input text color */
+    border: none;            /* Remove default border */
+    border-radius: 5px;       /* Add rounded corners */
+    padding: 10px;          /* Add padding for better appearance */
+    box-sizing: border-box;  /* Include padding in element's total width/height */
+    margin-top: 5px;     /* Add space between inputs */
+    margin-bottom: 5px;     /* Add space between inputs */
+    width: 82%;            /* Make inputs take full available width */
+}
+
+.swal2-input:focus {
+    outline: none;           /* Remove default focus outline */
+    box-shadow: 0 0 5px #7289da; /* Add a subtle glow on focus */
+}
+
+.swal2-label {
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    display: block;
+    font-size: 21px;
+}
+
+
+
+.image-upload-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    /* Ortalamak için margin ayarı */   
+    cursor: pointer;
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+.image-upload-wrapper input[type="file"] {
+    display: none;
+}

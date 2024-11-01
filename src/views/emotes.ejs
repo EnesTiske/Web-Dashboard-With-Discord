@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Emotes</title>
+    <link rel="icon" href="/icons/emotesIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/customEmote.css">
+    <link rel="stylesheet" href="/css/customEmoteSwal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    
+
+    <div class="container">
+        <% if (userIsAdmin) { %>
+            <%- include('partials/sidebarAdmin') %>
+        <% } else { %>
+            <%- include('partials/sidebar') %>
+        <% } %>
+        <div class="main-content">
+           <%- include("partials/authButton") %>
+           <div id="emotes-container" class="emotes-container">
+               <!-- Emotes will be dynamically inserted here -->
+           </div>
+        </div>
+    </div>
+    
+        
+
+    <script>
+        const user = <%- JSON.stringify(user) %>;
+        const userIsAdmin = <%- userIsAdmin %>;
+        const usersEmotes = <%- JSON.stringify(usersEmotes) %>;
+    </script>
+    <script type="text/javascript" src="/js/emotes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

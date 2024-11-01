@@ -1,0 +1,541 @@
+.container {
+    display: flex;
+}
+
+.main-content {
+    width: 80% !important;
+    height: 95% ;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* İçeriğin taşmasını engellemek için */
+}
+
+.top-div,
+.middle-div,
+.bottom-div {
+    margin: 1%;
+}
+
+.top-div {
+    height: 1vh;
+}
+
+.middle-div {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.subscription-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* Yazı rengi */
+    background-color: #444; /* Arka plan rengi */
+    padding: 5px;
+    border-radius: 4px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.upper-part-wrapper {
+    height: 100%;
+    width: 120%; /* Genişliği %100 yapın, overflow işlemi için gerekli */
+    position: relative; /* Konumlandırma için relative yapın */
+}
+
+.upper-part {
+    height: 90%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: scroll; /* Yatay kaydırmayı etkinleştirin */
+    overflow-y: hidden; /* Dikey kaydırmayı gizleyin */
+    width: 100%; /* İçeriği taşıyacak genişlik ayarı */
+    top: 0;
+    left: 0;
+}
+
+
+.products-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1vh; /* Üst kısmın altına biraz boşluk ekler */
+    color: white; /* Yazı rengi */
+    background-color: #444; /* Arka plan rengi */
+    padding: 5px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+/* Küçük ekranlar için */
+@media screen and (max-width: 480px) {
+    .products-title, .subscription-title {
+        font-size: 16px; /* Küçük ekranlarda font boyutunu küçültmek */
+    }
+    .top-div {
+        height: 3vh;
+    }
+}
+
+/* Orta boyutlu ekranlar için */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .products-title, .subscription-title {
+        font-size: 20px; /* Orta boyutlu ekranlarda font boyutunu değiştirmek */
+    }
+    .top-div {
+        height: 2vh;
+    }
+}
+
+/* Büyük ekranlar için */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .products-title, .subscription-title {
+        font-size: 22px; /* Büyük ekranlarda font boyutunu değiştirmek */
+    }
+    .top-div {
+        height: 1vh;
+    }
+}
+
+/* Çok büyük ekranlar için */
+@media screen and (min-width: 1025px) {
+    .products-title, .subscription-title {
+        font-size: 24px; /* Çok büyük ekranlarda font boyutunu değiştirmek */
+    }
+}
+
+
+
+
+
+.lower-part {
+    height: 50%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    width: 120%;
+}
+
+
+
+#cancel-subs {
+    background-color: #ff2a3d; /* Buton arka plan rengi */
+    color: white; /* Buton yazı rengi */
+    border: none; /* Buton kenarlığı */
+    border-radius: 0.5em; /* Buton köşe yuvarlaklığı */
+    cursor: pointer; /* Mouse imlecini işaretçi yap */
+    transition: background-color 0.3s ease; /* Arka plan rengi geçiş efekti */
+    width: 22vh; /* Buton genişliği içeriğine göre dinamik olacak */
+    height: 5vh; /* Buton yüksekliği içeriğine göre dinamik olacak */
+    display: flex; /* Flexbox modelini kullan */
+    justify-content: center; /* Yatayda içeriği ortala */
+    align-items: center; /* Dikeyde içeriği ortala */
+}
+
+#cancel-subs:hover {
+    background-color: #ff4154; /* Hover durumu için arka plan rengi */
+}
+
+#cancel-subs:active {
+    background-color: #e6001a; /* Tıklama durumu için arka plan rengi */
+}
+
+#cancel-subs:focus {
+    outline: none; /* Odaklanma durumunda dış çizgiyi kaldır */
+    box-shadow: 0 0 0 0.2em rgba(255, 75, 92, 0.5); /* Odaklanma durumu için gölge efekti */
+}
+
+
+
+
+
+
+
+
+/* Modal genel stili */
+.swal2-dark-popup {
+    width: 450px; /* Modal genişliğini ayarlayın */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #37393e; /* Modal arka plan rengi */
+    backdrop-filter: blur(10px); /* Arka planı bulanıklaştırmak için */
+}
+
+.swal2-dark-popup .swal2-title {
+    color: #fff; /* Başlık yazı rengi */
+    font-size: 32px; /*
+    Başlık yazı tipi boyutu */
+    margin-bottom: 16px; /* Başlık altındaki boşluk */
+}
+
+/* Select menü stili */
+.swal2-dark-popup .swal2-select {
+    width: 80%;
+    padding: 10px;
+    font-size: 20px;
+    color: #ffffff; /* Yazı rengi */
+    background-color: #4a4a4a; /* Arka plan rengi */
+    border: 1px solid #6c757d; /* Kenarlık rengi */
+    border-radius: 5px; /* Köşe yuvarlaklığı */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Alt boşluk */
+}
+
+/* Select menüdeki seçeneklerin stili */
+.swal2-dark-popup .swal2-select option {
+    background-color: #4a4a4a; /* Seçeneklerin arka plan rengi */
+    color: #ffffff; /* Seçeneklerin yazı rengi */
+}
+
+/* Onay butonu stili */
+.swal2-dark-popup .swal2-confirm {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none; /* Kenarlık kaldır */
+    border-radius: 5px; /* Köşe yuvarlaklığı */
+    cursor: pointer;
+    background-color: #dc3545; /* Onay butonu arka plan rengi */
+    color: #ffffff; /* Onay butonu yazı rengi */
+    transition: background-color 0.3s ease;
+}
+
+/* Onay butonu hover stili */
+.swal2-dark-popup .swal2-confirm:hover {
+    background-color: #c82333; /* Onay butonu hover arka plan rengi */
+}
+
+/* İptal butonu stili */
+.swal2-dark-popup .swal2-cancel {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none; /* Kenarlık kaldır */
+    border-radius: 5px; /* Köşe yuvarlaklığı */
+    cursor: pointer;
+    background-color: darkgray; /* İptal butonu arka plan rengi */
+    color: #ffffff; /* İptal butonu yazı rengi */
+    transition: background-color 0.3s ease;
+}
+
+/* İptal butonu hover stili */
+.swal2-dark-popup .swal2-cancel:hover {
+    background-color: gray; /* İptal butonu hover arka plan rengi */
+}
+
+.swal2-dark-popup .swal2-text {
+    color: #ffffff; /* Yazı rengi */
+    font-size: 20px; /* Yazı boyutu */
+    margin-bottom: 20px; /* Alt boşluk */
+}
+
+
+
+
+
+
+
+
+
+
+.box {
+    width: 25vh;
+    height: 30vh;
+    background-color: #e0e0e0;
+    margin: 1.5%;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background-color 0.5s, color 0.5s;
+    overflow: hidden; /* İçeriğin taşmasını gizleyin */
+}
+
+.box .index{
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 7px;
+    text-align: center;
+    white-space: normal; /* Metni alt satıra geçirebilir */
+    overflow: hidden; /* İçeriğin taşmasını gizleyin */
+    text-overflow: ellipsis; /* Metin sığmadığında "..." ekleyin */
+}
+
+.box .amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 7px;
+    text-align: center;
+    white-space: normal; /* Metni alt satıra geçirebilir */
+    overflow: hidden; /* İçeriğin taşmasını gizleyin */
+    text-overflow: ellipsis; /* Metin sığmadığında "..." ekleyin */
+}
+
+
+.box .image {
+    flex: 1; /* Resim alanını kutunun geri kalan kısmına genişletin */
+    display: flex; /* Resmi ortalamak için flex kullanın */
+    justify-content: center; /* Resmi ortalamak için flex kullanın */
+    align-items: center; /* Resmi ortalamak için flex kullanın */
+    border-radius: 8px;
+    height: 75%; /* Resmi kutunun yüksekliğine genişletin */
+    overflow: hidden; /* İçeriğin taşmasını gizleyin */
+}
+
+.box .image img {
+    max-width: 100%; /* Resmi image div'inin içine sığacak şekilde ayarlayın */
+    max-height: 100%; /* Resmi image div'inin içine sığacak şekilde ayarlayın */
+    object-fit: cover; /* Resmi img etiketinin içine sığacak şekilde ayarlayın */
+    vertical-align: middle; /* Dikey hizalamayı düzenleyin */
+}
+
+
+/* Küçük ekranlar için */
+@media screen and (max-width: 480px) {
+    .box .index, .box .amount {
+        font-size: 14px; /* Küçük ekranlarda font boyutunu küçültmek */
+    }
+}
+
+/* Orta boyutlu ekranlar için */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .box .index, .box .amount {
+        font-size: 18px; /* Orta boyutlu ekranlarda font boyutunu değiştirmek */
+    }
+}
+
+/* Büyük ekranlar için */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .box .index, .box .amount {
+        font-size: 20px; /* Büyük ekranlarda font boyutunu değiştirmek */
+    }
+}
+
+/* Çok büyük ekranlar için */
+@media screen and (min-width: 1025px) {
+    .box .index, .box .amount {
+        font-size: 20px; /* Çok büyük ekranlarda font boyutunu değiştirmek */
+    }
+}
+
+
+
+
+.box-default {
+    background-color: gray;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hover Efektleri */
+.box:hover {
+    transform: translateY(-8px);
+    /* Hover sırasında kutuyu yukarı kaldır */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Hover sırasında gölgeyi artır */
+    background-color: #cccccc;
+    /* Arka plan rengini değiştir */
+    color: black;
+    /* Metin rengini değiştir */
+}
+
+/* İlk üç kutu için özel ışıltı efekti */
+.box-1{
+    box-shadow: 0 12px 25px rgba(138, 43, 226, 0.5);
+    /* Işıltı efekti */
+}
+
+.box-1:hover,
+.box-2:hover,
+.box-3:hover {
+    transform: none;
+    /* Hover sırasında kutuyu yukarı kaldır */
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.7);
+    /* Hover sırasında ışıltıyı artır */
+}
+
+.box-1 {
+    background-color: #9b30ff;
+    color: white;
+}
+
+.box-2 {
+    background-color: #0000ee;
+    color: white;
+}
+
+.box-3 {
+    background-color: #eec900;
+    color: white;
+}
+
+.box-2 {
+    box-shadow: 0 3px 14px rgba(0, 0, 139, 0.5);
+    /* Işıltı efekti */
+}
+
+.box-3 {
+    box-shadow: 0 2px 12px rgba(238, 201, 0, 0.5);
+    /* Işıltı efekti */
+}
+
+
+
+
+.box-1:hover {
+    transform: translateY(-12px);
+    animation: floatUp1 1.2s ease-in-out;
+}
+
+.box-2:hover {
+    transform: translateY(-11px);
+    animation: floatUp2 1.5s ease-in-out;
+    box-shadow: 0 6px 20px rgba(0, 0, 139, 0.8);
+
+}
+
+.box-3:hover {
+    transform: translateY(-10px);
+    animation: floatUp3 1.5s ease-in-out;
+    box-shadow: 0 6px 20px rgba(238, 201, 0, 0.8);
+}
+
+.box-default:hover {
+    animation: floatUp 2s;
+}
+
+
+
+/* Animasyonlar */
+@keyframes floatUp1 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    60% {
+        transform: translateY(-11px);
+    }
+
+    70% {
+        transform: translateY(-12px);
+    }
+
+    80% {
+        transform: translateY(-13px);
+    }
+
+    90% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(-11.5px);
+    }
+}
+
+@keyframes floatUp2 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-11px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+
+    70% {
+        transform: translateY(-11px);
+    }
+
+    80% {
+        transform: translateY(-12px);
+    }
+
+    90% {
+        transform: translateY(-11px);
+    }
+
+    100% {
+        transform: translateY(-10.5px);
+    }
+}
+
+@keyframes floatUp3 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-9px);
+    }
+
+    70% {
+        transform: translateY(-10px);
+    }
+
+    80% {
+        transform: translateY(-11px);
+    }
+
+    90% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(-9.5px);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    60% {
+        transform: translateY(-7px);
+    }
+
+    70% {
+        transform: translateY(-8px);
+    }
+
+    80% {
+        transform: translateY(-9px);
+    }
+
+    90% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(-7.5px);
+    }
+}

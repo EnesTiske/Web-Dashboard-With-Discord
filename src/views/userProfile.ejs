@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Profiles</title>
+    <link rel="icon" href="/icons/profileIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/userProfile.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+
+        #xp-button,
+        #balance-button,
+        #quip-button,
+        #bar-color-button,
+        #background-color-button {
+            background-color: <%=data.backgroundColor %>;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
+            width: 20%;
+            align-self: flex-start;
+            box-sizing: border-box;
+            white-space: nowrap;    
+            overflow: hidden;       
+            text-overflow: ellipsis
+        }
+
+        #xp-button:hover,
+        #balance-button:hover,
+        #quip-button:hover,
+        #bar-color-button:hover,
+        #background-color-button:hover {
+            background-color: <%=data.backgroundColor %>;
+            transform: scale(1.05);
+        }
+
+        .search-bar {
+            width: 250px;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #4f545c;
+            color: #fff;
+        }
+        
+        #autocomplete-parent {
+            position: absolute;
+            border: 1px solid #43474d;
+            background-color: #4f545c;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 280px;
+            border-radius: 8px;
+        }
+        
+        .autocomplete-items {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .autocomplete-items div {
+            padding: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+        
+        .autocomplete-items div:hover {
+            background-color: #43474d;
+        }
+        
+        .autocomplete-active {
+            background-color: DodgerBlue !important;
+            color: #ffffff;
+        }
+        
+        
+        .search-bar-body {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .swal2-dark-popup {
+            background-color: #2f3136;
+            color: white;
+        }
+        
+        .equal-input {
+            width: 80%;
+            height: 50px;
+            box-sizing: border-box;
+        }
+        
+        .swal2-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+        
+        .main-content2 {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+    
+        @media screen and (max-width: 600px) {
+            .search-bar {
+                width: 220px;
+                font-size: 16px;
+                margin-top: 12px;
+            }
+        
+            #autocomplete-parent {
+                width: 250px;
+            }
+        
+            #xp-button,
+            #balance-button,
+            #quip-button,
+            #bar-color-button,
+            #background-color-button {
+                width: 90%;
+                padding: 6px 9px;
+                /* Daha küçük padding */
+                font-size: 14px;
+                /* Daha küçük font boyutu */
+                margin-bottom: 5px;
+            }
+        
+            .main-content2 {
+                padding: 5px;
+                padding-top: 20px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+        }
+        
+        @media screen and (min-width: 601px) and (max-width: 1024px) {
+            .search-bar {
+                width: 220px;
+                padding: 9px 14px;
+                font-size: 17px;
+                margin-top: 35px;
+            }
+        
+            #autocomplete-parent {
+                width: 250px;
+            }
+        
+            #xp-button,
+            #balance-button,
+            #quip-button,
+            #bar-color-button,
+            #background-color-button {
+                padding: 9px 14px;
+                font-size: 16px;
+                margin-top: 50px;
+            }
+        }
+        
+        @media screen and (min-width: 1025px) {
+            .search-bar {
+                width: 220px;
+                padding: 10px 15px;
+                font-size: 18px;
+            }
+        
+            #autocomplete-parent {
+                width: 250px;
+            }
+        
+            #xp-button,
+            #balance-button,
+            #quip-button,
+            #bar-color-button,
+            #background-color-button {
+                padding: 10px 15px;
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .search-bar-body {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .functions {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 30px;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        .profile-body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2c2f33;
+            overflow: hidden;
+        }
+
+        .profile-card {
+            background-color: <%=data.backgroundColor %>;
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-header img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .username {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .joined-date,
+        .level {
+            font-size: 14px;
+            color: #b9bbbe;
+            margin: 2px 0;
+        }
+
+        .exp-bar-container {
+            position: relative;
+            background-color: #4f545c;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+            height: 18px;
+        }
+
+        .exp-bar {
+            height: 100%;
+            background-color: <%=data.progressColor %>;
+            width: <%=data.percentage %>%;
+            min-width: 5px;
+        }
+
+        .exp-text {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            text-align: left;
+            color: <%=data.backgroundColor %>;
+            font-size: 14px;
+            line-height: 18px;
+            z-index: 1;
+        }
+
+        .level-text {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            text-align: right;
+            color: <%=data.backgroundColor %>;
+            font-size: 14px;
+            line-height: 18px;
+            z-index: 1;
+        }
+
+        .quip {
+            font-size: 14px;
+            color: #b9bbbe;
+            margin: 5px 0;
+        }
+
+
+        @media screen and (max-width: 600px) {
+            .profile-body {
+                width: 275px;
+            }
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 1024px) {
+            .profile-body {
+                width: 100%;
+
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            .profile-body {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <% if (userIsAdmin) { %>
+            <%- include('partials/sidebarAdmin') %>
+        <% } else { %>
+            <%- include('partials/sidebar') %>
+        <% } %>
+        <div class="main-content2">
+            <%- include("partials/authButton") %>
+            <div class="functions">
+                <% if (userIsAdmin) { %>
+                    <button id="xp-button">Add-Remove Xp</button>
+                    <button id="balance-button">Add-Remove Coin</button>
+                    <button id="quip-button">Set Profile Quip</button>
+                    <button id="bar-color-button">Set Bar Color</button>
+                    <button id="background-color-button">Set Background Color</button>
+                <% } %> 
+                <% if (userIsAdmin || data.id == user.id) { %>
+                <% } %> 
+            </div>
+            <div class="search-bar-body">
+                <div class="search-bar-container">
+                    <input type="text" id="searchBar" class="search-bar" placeholder="Search...">
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <img id="avatar-id" src="<%= data.avatar %>" alt="Avatar">
+                        <div class="profile-info">
+                            <div id="username-id" class="username">
+                                <%= data.name %>
+                            </div>
+                            <div id="joined-date-id" class="joined-date">joined: <%= data.joinedDate %>
+                            </div>
+                            <div id="level-id" class="level">lvl. <%= data.level %> | 14 achievements</div>
+                        </div>
+                    </div>
+                    <div class="exp-bar-container">
+                        <div id="exp-bar-container-id" class="exp-bar"></div>
+                        <div id="exp-text-id" class="exp-text">exp: <%= data.xp %>/<%= data.requiredXp %>
+                        </div>
+                        <div id="level-text-id" class="level-text">lvl. <%= data.level %>
+                        </div>
+                    </div>
+                    <div id="quip-id" class="quip">
+                        <%= data.quip %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const allUsers = <%- JSON.stringify(allUsers) %>;
+            const searchBox = document.getElementById('search-box');
+
+            searchBox.addEventListener('input', function () {
+                const searchText = this.value.toLowerCase();
+                const matches = allUsers.filter(user => user.toLowerCase().includes(searchText));
+
+                const autocompleteList = document.getElementById('autocomplete-list');
+                autocompleteList.innerHTML = '';
+
+                matches.forEach(match => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = match;
+                    listItem.addEventListener('click', function () {
+                        searchBox.value = match;
+                        autocompleteList.innerHTML = '';
+                    });
+                    autocompleteList.appendChild(listItem);
+                });
+            });
+        });
+    </script>
+    <script>
+        const user = <%- JSON.stringify(user) %>;
+        const allUsers = <%- JSON.stringify(allUsers) %>;
+        const data = <%- JSON.stringify(data) %>;
+    </script>
+    <script type="text/javascript" src="/js/userProfile.js"></script>
+</body>
+
+</html>

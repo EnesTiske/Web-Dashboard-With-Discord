@@ -1,0 +1,257 @@
+.data-table-leaderboards {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#leaderboard-content {
+    overflow-y: auto;
+    max-height: 80%; 
+}      
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    margin-left: 20%;
+}
+
+
+.user-icon {
+    margin-right: 15px; /* İkon ile kullanıcı adı arasındaki boşluğu ayarlar */
+    margin-left: 15px;
+    border-radius: 16px;
+}
+
+.data-table-leaderboards th,
+.data-table-leaderboards td {
+    padding: 15px;
+    text-align: center;
+
+}
+
+.data-table-leaderboards th {
+    background-color: #2f3136;
+    color: #ffffff;
+    padding: 15px;
+    text-align: auto;
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Mutlak konumlandırma için */
+}
+
+
+.data-table-leaderboards tr:nth-child(odd) {
+    background-color: #2c2f33; /* Koyu arkaplan */
+}
+
+.data-table-leaderboards tr:nth-child(even) {
+    background-color: #323439; /* Açık arkaplan */
+}
+
+.data-table-leaderboards tr:hover {
+    background-color: #7289da;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.data-table-leaderboards tr:hover td {
+    color: #ffffff;
+}
+
+/* Pagination button styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Pagination button styles */
+.pagination button {
+    background-color: #7289da;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #5b6eae;
+}
+
+/* Style the select menu */
+select {
+    background-color: #7289da;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: fit-content;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
+}
+
+select:focus {
+    outline: none;
+    background-color: #5a6dbf;
+}
+
+/* Style the dropdown options */
+select option {
+    background-color: #2c2f33;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+option {
+    text-align: center;
+}
+
+/* Adjusted styling for filter period button */
+#filterPeriodButton {
+    background-color: #7289da;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px; /* Matching the select padding */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#filterPeriodButton:hover {
+    background-color: #5a6dbf;
+    transform: scale(1.05);
+}
+
+#filterPeriodButton:active {
+    transform: scale(0.95);
+}
+
+/* Additional styling for positioning */
+.filter-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px; /* Adds space between elements */
+}  
+
+/* Temel stiller - Yukarıdaki CSS kodu */
+
+/* Küçük ekranlar için medya sorguları (600px altı) */
+@media (max-width: 600px) {
+    .data-table-leaderboards th, .data-table-leaderboards td {
+        padding: 4px; /* Daha küçük padding */
+        font-size: 12px;
+    }
+
+    .pagination .prev-btn, .pagination .next-btn, .pagination button {
+        padding: 5px 10px; /* Daha küçük padding */
+        font-size: 14px; /* Daha küçük font boyutu */
+    }
+
+    .user-cell {
+        margin-left: 0%;
+    }
+
+    .user-icon {
+        margin-right: 5px; 
+        margin-left: 5px;
+        width: 24px;
+        height: 24px;
+    }
+
+    select {
+        padding: 5px; /* Daha küçük padding */
+        font-size: 14px; /* Daha küçük font boyutu */
+    }
+
+    #filterPeriodButton {
+        padding: 5px 10px; /* Daha küçük padding */
+        font-size: 14px; /* Daha küçük font boyutu */
+    }
+
+    .filter-container {
+        flex-direction: column; /* Dikey yönlendirme */
+        gap: 5px; /* Daha küçük aralık */
+    }
+
+    #leaderboard-content {
+        max-height: 70%; /* İhtiyacınıza göre ayarlayın */
+    }        
+}
+
+/* Orta ekranlar için medya sorguları (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .data-table-leaderboards th, .data-table-leaderboards td {
+        padding: 12px; /* Orta boy padding */
+    }
+
+    .pagination .prev-btn, .pagination .next-btn, .pagination button {
+        padding: 8px 15px; /* Orta boy padding */
+        font-size: 16px; /* Orta boy font boyutu */
+    }
+
+    select {
+        padding: 8px; /* Orta boy padding */
+        font-size: 16px; /* Orta boy font boyutu */
+    }
+
+    #filterPeriodButton {
+        padding: 8px 15px; /* Orta boy padding */
+        font-size: 16px; /* Orta boy font boyutu */
+    }
+
+    .filter-container {
+        gap: 8px; /* Orta boy aralık */
+    }
+}
+
+/* Büyük ekranlar için medya sorguları (1025px ve üzeri) */
+@media (min-width: 1025px) {
+    .data-table-leaderboards th, .data-table-leaderboards td {
+        padding: 15px; /* Büyük ekranlar için daha geniş padding */
+    }
+
+    .pagination .prev-btn, .pagination .next-btn, .pagination button {
+        padding: 10px 20px; /* Büyük ekranlar için daha geniş padding */
+        font-size: 18px; /* Büyük ekranlar için daha büyük font boyutu */
+    }
+
+    select {
+        padding: 10px; /* Büyük ekranlar için daha geniş padding */
+        font-size: 18px; /* Büyük ekranlar için daha büyük font boyutu */
+    }
+
+    #filterPeriodButton {
+        padding: 10px 20px; /* Büyük ekranlar için daha geniş padding */
+        font-size: 18px; /* Büyük ekranlar için daha büyük font boyutu */
+    }
+
+    .filter-container {
+        gap: 10px; /* Büyük ekranlar için daha geniş aralık */
+    }
+}
+
+
+
+/* Orta ekranlar için medya sorguları (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .filter-container {
+        margin-top: 30px; /* Orta ekranlar için daha fazla üstten boşluk */
+    }
+}
+
+/* Küçük ekranlar için medya sorguları (600px altı) */
+@media (max-width: 600px) {
+    .filter-container {
+        margin-top: 50px; /* Küçük ekranlar için daha fazla üstten boşluk */
+    }
+}
+
+

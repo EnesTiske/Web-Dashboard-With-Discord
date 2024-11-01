@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Shop</title>
+    <link rel="icon" href="/icons/currencyIcon.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/css/currency.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <% if (userIsAdmin) { %>
+            <%- include('partials/sidebarAdmin') %>
+        <% } else { %>
+            <%- include('partials/sidebar') %>
+        <% } %>
+        <div class="main-content">
+           <%- include("partials/authButton") %>
+           <div class="top-space" id="top-space">
+
+           </div>
+
+            <div class="main-div" id="main-div">
+                <!-- Boxes will be dynamically added here -->
+
+            </div>
+           
+    <script>
+        const shopData = <%- JSON.stringify(shopData) %>;
+        const rolesInfo = <%- JSON.stringify(rolesInfo) %>;
+        const userIsAdmin = <%- userIsAdmin %>;
+    </script>
+    <script src="/js/currency.js"></script>
+</body>
+</html>

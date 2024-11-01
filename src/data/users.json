@@ -1,0 +1,44 @@
+[
+  {
+    "discordId": "781534515776454707",
+    "subscriptionStatus": "active",
+    "stripeCustomerId": "cus_QSow7Hh1E5UPf8",
+    "subscriptionId": ""
+  },
+  {
+    "discordId": "214408099505766404",
+    "subscriptionStatus": "inactive",
+    "stripeCustomerId": "cus_QT4K7WJ6lxJ5L7",
+    "subscriptionId": ""
+  },
+  {
+    "discordId": "976413551730245633",
+    "subscriptionStatus": "inactive",
+    "stripeCustomerId": "cus_QTO3lZHCvTW3sg",
+    "subscriptionId": ""
+  },
+  {
+    "discordId": "299964558217445378",
+    "subscriptionStatus": "inactive",
+    "stripeCustomerId": "cus_QTO8JGiZ3zswa3",
+    "subscriptionId": ""
+  },
+  {
+    "discordId": "322829406894686210",
+    "subscriptionStatus": "inactive",
+    "stripeCustomerId": "cus_Qc9DNn8pk2JIXZ",
+    "subscriptionId": ""
+  },
+  {
+    "discordId": "204321222018727936",
+    "subscriptionStatus": "inactive",
+    "stripeCustomerId": "cus_QelqCHBmOopkJX",
+    "subscriptionId": ""
+  },
+  {
+    "discordId": "464739737953894400",
+    "subscriptionStatus": "inactive",
+    "stripeCustomerId": "cus_Qem7rAFkhN3l5u",
+    "subscriptionId": ""
+  }
+]

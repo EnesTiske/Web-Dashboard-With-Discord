@@ -1,0 +1,15 @@
+{
+  "messageXp": 1,
+  "photoXp": 2,
+  "videoXp": 3,
+  "addReactionExp": 0.25,
+  "emoteXp": 0.25,
+  "callXp": 2,
+  "eventXp": 100,
+  "messageXpWaitDurationSecond": 1,
+  "photoXpWaitDurationSecond": 1,
+  "levelUpXp": 100,
+  "callXpWaitDurationMin": 1,
+  "gmtAmount": 0,
+  "giveawayEmoji": "✅"
+}

@@ -1,0 +1,24 @@
+.swal2-form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.swal2-label-edit {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.swal2-value-edit {
+    padding: 10px;
+    background-color: #18191c;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.swal2-deny.swal2-edit-button {
+    background-color: orange;
+    color: white;
+}

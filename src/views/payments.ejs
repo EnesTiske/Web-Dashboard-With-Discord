@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Payment</title>
+    <link rel="icon" href="/icons/paymentIcon.png" type="image/png">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <% if (userIsAdmin) { %>
+        <%- include('partials/sidebarAdmin') %>
+    <% } else { %>
+        <%- include('partials/sidebar') %>
+    <% } %>
+    <div class="main-content">
+      <%- include("partials/authButton") %>
+
+      <% if (user != null) { %>
+        
+        <!-- Üstteki div -->
+        <div class="top-div">
+
+        </div> 
+
+                
+        <!-- Ortadaki div -->
+        <div class="middle-div">
+          <!-- Üst kısım -->
+          <div class="upper-part-wrapper">
+            <div class="subscription-title">Subscription</div>
+            <div class="upper-part">
+              <% for (let i = 0; i < subsData.length; i++) { %>
+                <div class="box subsBox box-<%= i + 1 <= 3 ? i + 1 : 'default' %>" data-plan-id="<%= subsData[i].default_price.id %>">
+                  <div class="index"><%= subsData[i].name %></div>
+                  <div class="amount"><%= "$" + subsData[i].default_price.unit_amount / 100 + " / " + subsData[i].default_price.recurring.interval + "ly" %></div>
+                  <% if (subsData[i].images && subsData[i].images[0]) { %>
+                    <div class="image">
+                      <img src="<%= subsData[i].images[0] %>" alt="<%= subsData[i].name %> image">
+                    </div>
+                  <% } %>
+                </div>
+              <% } %>
+            </div>
+          </div>
+
+          <!-- Alt kısım -->
+          <div class="upper-part-wrapper">
+            <div class="subscription-title">Products</div>
+            <div class="upper-part">
+              <% for (let i = 0; i < productData.length; i++) { %>
+                <div class="box productsBox box-<%= i + 1 <= 3 ? i + 1 : 'default' %>" data-plan-id="<%= productData[i].default_price.id %>">
+                  <div class="index"><%= productData[i].name %></div>
+                  <div class="amount"><%= "$" + productData[i].default_price.unit_amount / 100 %></div>
+                  <% if (productData[i].images && productData[i].images[0]) { %>
+                    <div class="image">
+                      <img src="<%= productData[i].images[0] %>" alt="<%= productData[i].name %> image">
+                    </div>
+                  <% } %>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alttaki div -->
+        <div class="bottom-div">
+            <button id="cancel-subs">
+              Cancel Subscription
+            </button>
+        </div>
+      <% } else { %>
+        <p>Please login to make a payment</p>
+      <% } %>
+    </div>
+  </div>
+  <script>
+    const stripe = Stripe("<%= key %>");
+    const userSubs = <%- JSON.stringify(userSubs) %>;
+    const subsData = <%- JSON.stringify(subsData) %>;
+  </script>
+  <script src="/js/payment.js"></script>
+</body>
+</html>

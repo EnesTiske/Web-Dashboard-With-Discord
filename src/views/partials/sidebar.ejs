@@ -1,0 +1,111 @@
+<div class="sidebar">
+    <div class="logo">
+        <div class="guild-info" onclick="goToGuildUrl('<%= guildInfo.guildUrl %>')">
+            <img src="<%= guildInfo.logoImageUrl %>" alt="">
+            <div>
+                <h2><%= guildInfo.guildName %></h2>
+                <div class="member-info">
+                    <div class="online-info">
+                        <span class="status-circle online"></span>
+                        <p><span class="online-members"><%= guildInfo.onlineMembers %></span> Online</p>
+                    </div>
+                    <div class="total-info">
+                        <span class="status-circle total"></span>
+                        <p><span class="total-members"><%= guildInfo.totalMembers %></span> Members</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="/" id="mainPage" data-tooltip="Discord Commands Info"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+            <a href="/profile" id="profilePage" data-tooltip="Access your profile and utilize the search bar to find other players' profiles. 
+            <br> Administrators can add XP and coins to users, set profile quips, and customize profile background and bar colors.">
+            <i class="fas fa-user-circle"></i> Profile</a>
+        </li>
+        <li>
+            <a href="/leaderboard" id="leaderboardPage" data-tooltip="View the Leaderboard with various sorting options.">
+            <i class="fas fa-list"></i> Leaderboard</a>
+        </li>
+        <li>
+            <a href="/emotes" id="emotesPage" data-tooltip="Browse user-created custom emotes. 
+            <br> Administrators can modify these custom emotes.">
+            <i class="fas fa-smile"></i> Custom Emotes</a>
+        </li>
+        <li>
+            <a href="/giveaway" id="giveawayPage" data-tooltip="View the list of current giveaways and their details. 
+            <br> Administrators can create new giveaways and modify existing ones.">
+            <i class="fas fa-gift"></i> Giveaways</a>
+        </li>
+        <li>
+            <a href="/currency" id="currencyPage" data-tooltip="Browse shop items and view their details. 
+            <br> Administrators can add new items or modify existing ones.">
+            <i class="fas fa-coins"></i> Currency</a>
+        </li>
+        <li>
+            <a href="/payments" id="paymentsPage" data-tooltip="Purchase products or subscriptions via Stripe, or cancel existing subscriptions.">
+            <i class="fas fa-money-bill-wave"></i> Payments</a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const path = window.location.pathname;
+
+        const links = {
+            '/': 'mainPage',
+            '/profile': 'profilePage',
+            '/leaderboard': 'leaderboardPage',
+            '/emotes': 'emotesPage',
+            '/giveaway': 'giveawayPage',
+            '/currency': 'currencyPage',
+            '/payments': 'paymentsPage',
+        };
+
+        if (links[path]) {
+            document.getElementById(links[path]).classList.add('active');
+        }
+    });
+
+    function goToGuildUrl(url) {
+        window.open(url, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.sidebar ul li a');
+    
+        links.forEach(link => {
+            link.addEventListener('mouseover', function() {
+                const tooltipText = this.getAttribute('data-tooltip');
+                let tooltip = document.createElement('div');
+                tooltip.classList.add('tooltip');
+                tooltip.innerHTML = `<strong>${tooltipText}</strong>`;
+                this.appendChild(tooltip);
+            });
+    
+            link.addEventListener('mouseout', function() {
+                const tooltip = this.querySelector('.tooltip');
+                if (tooltip) {
+                    this.removeChild(tooltip);
+                }
+            });
+        });
+
+        const guildInfo = document.querySelector('.guild-info');
+        guildInfo.addEventListener('click', function() {
+            goToGuildUrl('<%= guildInfo.guildUrl %>');
+        });
+
+        guildInfo.querySelectorAll('*').forEach(element => {
+            element.style.cursor = 'pointer';
+            element.addEventListener('click', function(event) {
+                event.stopPropagation();
+                goToGuildUrl('<%= guildInfo.guildUrl %>');
+            });
+        });
+    });
+</script>

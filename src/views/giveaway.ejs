@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Giveaways</title>
+    <link rel="icon" href="/icons/giveawayIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/giveawayCreate.css">
+    <link rel="stylesheet" href="/css/giveawayInfo.css">
+    <link rel="stylesheet" href="/css/giveaway.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+            <% if (userIsAdmin) { %>
+                <%- include('partials/sidebarAdmin') %>
+            <% } else { %>
+                <%- include('partials/sidebar') %>
+            <% } %>
+            <div class="main-content">
+                <%- include("partials/authButton") %>
+                
+                    <% if (userIsAdmin) { %>
+                        <button id="create-button">Create</button>
+                        <% } else { %>
+                            <button id="create-button" disabled>You Are Not an Admin</button>
+                            <% } %>
+                            <div id="dynamic-row">
+                                <table id="data-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Winner Amount</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Dynamic rows will be inserted here -->
+                                    </tbody>
+                                </table>
+            </div>
+            <div class="pagination">
+                <button id="prev-button">Prev</button>
+                <button id="next-button">Next</button>
+            </div>
+    </div>
+    </div>
+
+    <script>
+        const rolesInfo = <%- JSON.stringify(rolesInfo) %>;
+        const channelInfo = <%- JSON.stringify(channelInfo) %>;
+        const giveaways = <%- JSON.stringify(giveaways) %>;
+        const userIsAdmin = <%- userIsAdmin %>;
+    </script>
+    <script type="text/javascript" src="/js/giveaway.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

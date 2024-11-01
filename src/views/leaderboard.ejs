@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Leaderboard</title>
+    <link rel="icon" href="/icons/leaderboardIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/leaderboard.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <% if (userIsAdmin) { %>
+            <%- include('partials/sidebarAdmin') %>
+        <% } else { %>
+            <%- include('partials/sidebar') %>
+        <% } %>
+        <div class="main-content">
+            <%- include("partials/authButton") %>
+            <div class="filter-container">
+                <label for="selectMenu">Choose an option:</label>
+                <select id="selectMenu">
+                    <option value="Xp">XP</option>
+                    <option value="callMin">Call Minute</option>
+                    <option value="eventMin">Event Minute</option>
+                    <option value="giveawayAmount">Giveaway Amount</option>
+                    <option value="wonGiveawayAmount">Won Giveaway Amount</option>
+                    <option value="textMessageAmount">Text Message Amount</option>
+                    <option value="imageMessageAmount">Image Message Amount</option>
+                    <option value="videoMessageAmount">Video Message Amount</option>
+                    <option value="emoteMessageAmount">Emote Amount</option>
+                    <option value="level">Level</option>
+                    <option value="boostTime">Boosters</option>
+                    <option value="subMonth">Sub</option>
+                </select>
+                <button id="filterPeriodButton">Total</button>
+            </div>
+            <div id="leaderboard-content">
+                <table id="leaderboard-table" class="data-table-leaderboards">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>User</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-rows">
+                        <!-- Dynamic rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script id="leaderboard-data" type="application/json"><%- JSON.stringify(leaderboard) %></script>
+    <script src="/js/leaderboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault-Home</title>
+    <link rel="icon" href="/icons/mainPageIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .banner-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            position: relative; 
+        }
+        .banner-image {
+            width: 100%;
+            max-height: 60%;
+            object-fit: cover;
+        }
+        .main-content2 {
+            padding: 0px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .info-box {
+            width: 46%;
+            padding-inline-start: 2%;
+            max-height: auto;
+        }
+        .info-box h2 {
+            font-size: 1.2em;
+            margin-bottom: 4%;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgb(223, 33, 33);
+        }
+        .info-box p {
+            margin: 5px 0px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        @media screen and (max-width: 600px) {
+            .info-box {
+                padding-inline-start: 5%;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <% if (userIsAdmin) { %>
+            <%- include('partials/sidebarAdmin') %>
+        <% } else { %>
+            <%- include('partials/sidebar') %>
+        <% } %>
+        <div class="main-content2">
+            <div class="banner-container">
+                <% if (guildInfo.bannerImageUrl !== null) { %>
+                    <img src="<%= guildInfo.bannerImageUrl %>" alt="Banner" class="banner-image">
+                <% } %>
+                <div class="info-container">
+                    <div class="info-box">
+                        <h2>Giveaway Commands</h2>
+                        <p><strong>/giveaways-info:</strong> Provides detailed information about a specific giveaway</p>
+                        <p><strong>/giveaways-delete:</strong> Deletes a specific giveaway</p>
+                        <p><strong>/giveaways-list:</strong> Lists all active giveaways</p>
+                        <p><strong>/change-giveaways-name:</strong> Change the name of a specific giveaway</p>
+                        <p><strong>/change-giveaways-description:</strong> Change the description of a specific giveaway</p>
+                        <p><strong>/change-giveaways-date:</strong> Change the date of a specific giveaway</p>
+                        <p><strong>/change-giveaways-winneramount:</strong> Change the number of winners for a specific giveaway</p>
+                        <p><strong>/change-giveaways-channel:</strong> Change the channel of a specific giveaway</p>
+                        <p><strong>/add-winner-user:</strong> Add a user as a winner to a specific giveaway</p>
+                        <p><strong>/remove-winner-user:</strong> Remove a user from a specific giveaway</p>
+                        <p><strong>/create-giveaway:</strong> Initiates a new giveaway event</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Subscription Commands</h2>
+                        <p><strong>/create-subs:</strong> Create a new subscription</p>
+                        <p><strong>/delete-subs:</strong> Delete a subscription</p>
+                        <p><strong>/subs-list:</strong> Lists all subscriptions</p>
+                        <p><strong>/subs-info:</strong> Provides detailed information about a specific subscription</p>
+                        <p><strong>/change-subs-name:</strong> Change the name of a specific subscription</p>
+                        <p><strong>/change-subs-id:</strong> Change the id of a specific subscription</p>
+                        <p><strong>/change-subs-role:</strong> Change the role of a specific subscription</p>
+                        <p><strong>/add-subs-user:</strong> Add a user to a specific subscription</p>
+                        <p><strong>/remove-subs-user:</strong> Remove a user from a specific subscription</p>
+                        <p><strong>/change-sub-entry:</strong> Change the entry of a specific subscription</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Repeating Message Commands</h2>
+                        <p><strong>/create-repeating-message:</strong> Create a new repeating message</p>
+                        <p><strong>/delete-repeating-message:</strong> Delete a repeating message</p>
+                        <p><strong>/repeating-messages-list:</strong> Lists all repeating messages</p>
+                        <p><strong>/repeating-message-info:</strong> Provides detailed information about a specific repeating message</p>
+                        <p><strong>/change-repeating-message:</strong> Change the message of a specific repeating message</p>
+                        <p><strong>/change-repeating-message-time:</strong> Change the time of a specific repeating message</p>
+                        <p><strong>/change-repeating-message-channel:</strong> Change the channel of a specific repeating message</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Shop Commands</h2>
+                        <p><strong>/add-item:</strong> Add an item to the shop</p>
+                        <p><strong>/remove-item:</strong> Remove an item from the shop</p>
+                        <p><strong>/shop:</strong> Shows the shop</p>
+                        <p><strong>/buy:</strong> Buy an item from the shop</p>
+                        <p><strong>/change-item-price:</strong> Change the price of an item in the shop</p>
+                        <p><strong>/change-item-description:</strong> Change the description of an item in the shop</p>
+                        <p><strong>/change-item-name:</strong> Change the name of an item in the shop</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Profile Commands</h2>
+                        <p><strong>/profile:</strong> Shows the profile of a user</p>
+                        <p><strong>/my-profile:</strong> Shows your profile</p>
+                        <p><strong>/set-progress-bar-color:</strong> Set your progress bar color</p>
+                        <p><strong>/set-profile-background:</strong> Set your profile background</p>
+                        <p><strong>/quip:</strong> Set your profile quip</p>
+                        <p><strong>/private-profile:</strong> Set your profile to private</p>
+                        <p><strong>/unprivate-profile:</strong> Set your profile to public</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Leaderboard Commands</h2>
+                        <p><strong>/leaderboard:</strong> Shows leaderboard</p>
+                        <p><strong>/add-xp:</strong> Add xp to a user</p>
+                        <p><strong>/add-level-role:</strong> Set a role for a level</p>
+                        <p><strong>/remove-level-role:</strong> Remove a level-role</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Currency Commands</h2>
+                        <p><strong>/balance:</strong> Shows your balance</p>
+                        <p><strong>/currency:</strong> Shows the currency of a user</p>
+                        <p><strong>/currency-history:</strong> Shows the currency history</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Config Commands</h2>
+                        <p><strong>/set-config:</strong> Set the configuration for the bot</p>
+                    </div>
+                    <div class="info-box">
+                        <h2>Reward Commands</h2>
+                        <p><strong>/reward:</strong> Give a user a reward</p>
+                    </div>                    
+                </div>
+                <div class="web-info-container">
+
+                </div>
+            </div>
+            <%- include("partials/authButton") %>
+        </div>
+    </div>
+</body>
+</html>

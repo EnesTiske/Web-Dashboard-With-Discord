@@ -1,0 +1,37 @@
+{
+  "type": "module",
+  "name": "webdn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "canvas": "^2.11.2",
+    "chart.js": "^4.4.3",
+    "color-name": "^2.0.0",
+    "discord-anti-spam": "^2.8.1",
+    "discord.js": "^14.15.2",
+    "discord.js-guard": "^1.0.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
+    "from": "^0.1.7",
+    "fs-extra": "^11.2.0",
+    "import": "^0.0.6",
+    "mongoose": "^8.5.3",
+    "mysql2": "^3.11.0",
+    "puppeteer": "^22.10.0",
+    "stripe": "^15.8.0",
+    "sweetalert2": "^11.11.0",
+    "uuid": "^9.0.1"
+  }
+}

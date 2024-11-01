@@ -1,0 +1,153 @@
+<style>
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background-color: #333;
+        margin: auto;
+        padding: 20px;
+        border-radius: 6px;
+        border: 1px solid #7f7f7f;
+        width: 200px;
+        height: 125px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        align-self: flex-end;
+        float: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        align-self: auto;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #profile-btn,
+    #exit-btn {
+        background-color: #7289da;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 25px;
+        width: 100%;
+    }
+
+    #exit-btn {
+        background-color: #e74c3c; /* Kırmızı rengi */
+        margin-top: 15px;
+    }
+
+    #profile-btn:hover {
+        background-color: rgb(82, 105, 184);
+    }
+
+    #exit-btn:hover {
+        background-color: #e4402e;
+    }
+
+</style>
+
+
+<div class="header">
+    <h1></h1>
+    <% if (!user) { %>
+        <button id="auth-button" class="btn">Login with Discord</button>
+        <% } else { %>
+            <% if (user.avatar !=null) { %>
+                <button id="auth-button" class="btn">
+                    <img class="avatar-img"
+                        src="<%= 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.png' %>">
+                    <%= user.username %>
+                </button>
+                <% } else { %>
+                    <button id="auth-button" class="btn">
+                        <img class="avatar-img"
+                            src="<%= 'https://cdn.discordapp.com/embed/avatars/1.png'%>">
+                        <%= user.username %>
+                    </button>
+                    <% } %>
+                        <% } %>
+</div>
+
+<div id="profile-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <button id="profile-btn">Profile</button>
+        <button id="exit-btn">Exit</button>
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('auth-button').onclick = function () {
+            if (<%- JSON.stringify(user) %> === null || <%- JSON.stringify(user) %> === undefined || <%- JSON.stringify(user) %> === {}){
+                window.location.href = '/api/auth/discord/login';
+            } else {
+                document.getElementById('profile-modal').style.display = 'flex';
+            }
+        };
+
+        document.getElementsByClassName('close')[0].onclick = function () {
+            document.getElementById('profile-modal').style.display = 'none';
+        };
+
+        document.getElementById('profile-btn').onclick = function () {
+            window.location.href = '/profile';
+        };
+
+        document.getElementById('exit-btn').onclick = function () {
+            fetch('/logout', {
+                method: 'POST', 
+                credentials: 'same-origin'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/'; 
+                        user = null;
+                    } else {
+                        console.error('Logout failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                });
+        };
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('profile-modal')) {
+                document.getElementById('profile-modal').style.display = 'none';
+            }
+        };
+    });
+</script>
